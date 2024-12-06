@@ -203,11 +203,14 @@ main {
     border-radius: 50%;
     padding: 4px;
     background: var(--accent-gradient);
+    mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
     -webkit-mask: 
         linear-gradient(#fff 0 0) content-box, 
         linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
     mask-composite: exclude;
+    -webkit-mask-composite: xor;
     pointer-events: none;
 }
 
