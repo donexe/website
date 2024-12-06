@@ -308,21 +308,21 @@ h1 {
 
 @media (max-width: 480px) {
     .gallery-section {
-        padding: 2rem 0.5rem;
+        padding: 1rem 0;
     }
     
     .gallery-grid {
-        gap: 0.8rem;
-        padding: 0.5rem;
+        gap: 0.3rem;
+        padding: 0.2rem;
     }
 
     .gallery-item {
-        border-radius: 8px;
+        border-radius: 4px;
     }
     
     h2 {
         font-size: 2.2rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
     }
 }
 
