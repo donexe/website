@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#1a1a1a">
+    
+    <!-- Фавиконки -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favico/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favico/favicon-16x16.png">
+    <link rel="manifest" href="favico/site.webmanifest">
+    <link rel="shortcut icon" href="favico/favicon.ico">
+    
+    <title>donexe</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-grid">
+        <div class="grid-container">
+            <script>
+                const container = document.querySelector('.grid-container');
+                for (let i = 0; i < 240; i++) {
+                    const div = document.createElement('div');
+                    div.className = i % 2 === 0 ? 'grid-item x' : 'grid-item o';
+                    container.appendChild(div);
+                }
+            </script>
+        </div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">donexe</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contacts">Contacts</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="home-section">
+            <div class="profile-container">
+                <div class="profile-image">
+                    <img src="profile.jpg" alt="Profile Image">
+                </div>
+                <h1>donexe</h1>
+                <p class="subtitle">media-content creator</p>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery-section">
+            <h2>Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="gallery/1.jpg" alt="Gallery image 1"></div>
+                <div class="gallery-item"><img src="gallery/2.jpg" alt="Gallery image 2"></div>
+                <div class="gallery-item"><img src="gallery/3.jpg" alt="Gallery image 3"></div>
+                <div class="gallery-item"><img src="gallery/4.jpg" alt="Gallery image 4"></div>
+                <div class="gallery-item"><img src="gallery/5.jpg" alt="Gallery image 5"></div>
+                <div class="gallery-item"><img src="gallery/6.jpg" alt="Gallery image 6"></div>
+                <div class="gallery-item"><img src="gallery/7.jpg" alt="Gallery image 7"></div>
+                <div class="gallery-item"><img src="gallery/8.jpg" alt="Gallery image 8"></div>
+                <div class="gallery-item"><img src="gallery/9.jpg" alt="Gallery image 9"></div>
+            </div>
+        </section>
+
+        <section id="contacts" class="contacts-section">
+            <div class="contacts-container">
+                <h2>Contacts</h2>
+                <div class="social-links">
+                    <a href="https://boosty.to/donexe" target="_blank" class="social-link">
+                        <i class="fas fa-heart"></i>
+                        <span>Boosty</span>
+                    </a>
+                    <a href="https://www.youtube.com/@donexe" target="_blank" class="social-link">
+                        <i class="fab fa-youtube"></i>
+                        <span>YouTube</span>
+                    </a>
+                    <a href="https://x.com/donexe_" target="_blank" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                        <span>Twitter</span>
+                    </a>
+                    <a href="https://soundcloud.com/donexe" target="_blank" class="social-link">
+                        <i class="fab fa-soundcloud"></i>
+                        <span>SoundCloud</span>
+                    </a>
+                    <a href="mailto:donexe@vk.ru" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                        <span>donexe@vk.ru</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+            <!-- Модальное окно для просмотра фотографий -->
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <img src="" alt="Modal Image" id="modalImage">
+            <span class="close-modal">&times;</span>
+        </div>
+    </div>
+    </main>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    <script>
+        // Плавный скролл
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    
+        // Модальное окно для фотографий
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeBtn = document.querySelector('.close-modal');
+        
+        // Открытие модального окна при клике на фото
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.addEventListener('click', function() {
+                modal.style.display = "flex";
+                modalImg.src = this.src;
+                requestAnimationFrame(() => modal.classList.add('show'));
+            });
+        });
+    
+        // Закрытие модального окна
+        function closeModal() {
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = "none";
+            }, 300);
+        }
+    
+        // Закрытие по клику на крестик
+        closeBtn.addEventListener('click', closeModal);
+    
+        // Закрытие по клику на картинку
+        modalImg.addEventListener('click', function(e) {
+            e.stopPropagation(); 
+            closeModal();
+        });
+
+        // Закрытие по клику вне изображения
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    
+        // Закрытие по клавише Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.style.display === "flex") {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
