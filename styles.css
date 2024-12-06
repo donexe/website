@@ -296,6 +296,10 @@ h1 {
 }
 
 @media (max-width: 768px) {
+    .gallery-section {
+        padding: 3rem 1.5rem;
+    }
+    
     .gallery-grid {
         gap: 1rem;
         padding: 1.5rem;
@@ -303,13 +307,22 @@ h1 {
 }
 
 @media (max-width: 480px) {
+    .gallery-section {
+        padding: 2rem 0.5rem;
+    }
+    
     .gallery-grid {
-        gap: 0.5rem;
-        padding: 0.8rem;
+        gap: 0.8rem;
+        padding: 0.5rem;
     }
 
     .gallery-item {
-        border-radius: 6px;
+        border-radius: 8px;
+    }
+    
+    h2 {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
     }
 }
 
@@ -474,4 +487,3 @@ body {
         margin: 0 auto; /* Центрирование */
     }
 }
-
